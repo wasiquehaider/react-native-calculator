@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View } from "react-native";
-
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 export default class CalcDisplay extends Component {
   static defaultProps = {
     display: ""

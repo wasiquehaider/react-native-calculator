@@ -90,6 +90,7 @@ export default class CalculatorScreen extends Component {
               title="C"
               fontColor="#fff"
               backgroundColor="#D4A065"
+              iconName="cuttlefish"
             />
             <CalcButton
               onPress={this.onPlusMinus}
@@ -102,14 +103,14 @@ export default class CalculatorScreen extends Component {
               title="%"
               fontColor="#fff"
               backgroundColor="#D4A065"
+              iconName="percentage"
             />
             <CalcButton
-              onPress={() =>
-                this.onBinaryOperatorPress(this.oc.DivisionOperator)
-              }
-              title="/"
+              onPress={this.onBackspacePress}
+              title="B"
               fontColor="#fff"
-              backgroundColor="#265B6A"
+              backgroundColor="#AA3939"
+              iconName="backspace"
             />
           </View>
           <View style={styles.buttonRow}>
@@ -144,6 +145,7 @@ export default class CalculatorScreen extends Component {
               title="x"
               fontColor="#fff"
               backgroundColor="#265B6A"
+              iconName="times"
             />
           </View>
           <View style={styles.buttonRow}>
@@ -178,6 +180,7 @@ export default class CalculatorScreen extends Component {
               title="-"
               fontColor="#fff"
               backgroundColor="#265B6A"
+              iconName="minus"
             />
           </View>
           <View style={styles.buttonRow}>
@@ -212,6 +215,7 @@ export default class CalculatorScreen extends Component {
               title="+"
               fontColor="#fff"
               backgroundColor="#265B6A"
+              iconName="plus"
             />
           </View>
           <View style={styles.buttonRow}>
@@ -222,7 +226,7 @@ export default class CalculatorScreen extends Component {
               title="0"
               fontColor="#fff"
               backgroundColor="#A3C584"
-              style={{ flex: 2 }}
+              // style={{ flex: 2 }}
             />
             <CalcButton
               onPress={() => {
@@ -236,7 +240,17 @@ export default class CalculatorScreen extends Component {
               onPress={this.onEqualsPress}
               title="="
               fontColor="#fff"
+              backgroundColor="#A3C584"
+              iconName="equals"
+            />
+            <CalcButton
+              onPress={() =>
+                this.onBinaryOperatorPress(this.oc.DivisionOperator)
+              }
+              title="/"
+              fontColor="#fff"
               backgroundColor="#265B6A"
+              iconName="divide"
             />
           </View>
         </View>
