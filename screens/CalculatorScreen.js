@@ -7,7 +7,11 @@ require("../libs/swisscalc.display.numericDisplay.js");
 require("../libs/swisscalc.display.memoryDisplay.js");
 import React, { Component } from "react";
 import { Text, StyleSheet, View, PanResponder, Dimensions } from "react-native";
-import { CalcButton, CalcDisplay } from "../components/index.js";
+import {
+  CalcButton,
+  CalcDisplay,
+  CalcButtonLandscape
+} from "../components/index.js";
 
 export default class CalculatorScreen extends Component {
   constructor(props) {
@@ -258,18 +262,206 @@ export default class CalculatorScreen extends Component {
     );
   };
 
-  renderLandscape = () => {
-    <View
-      style={{
-        flex: 1,
-        paddingTop: 50,
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
-      <Text style={{ color: "#fff" }}>Landscape Mode</Text>
-    </View>;
-  };
+  renderLandscape() {
+    return (
+      <View style={{ flex: 1 }}>
+        <View style={[styles.displayContainer, { backgroundColor: "red" }]}>
+          <CalcDisplay display={this.state.display} />
+        </View>
+        <View style={{ backgroundColor: "gree" }}>
+          <View style={{ flexDirection: "row" }}>
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("7");
+              }}
+              title="7"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("8");
+              }}
+              title="8"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              title="9"
+              onPress={() => {
+                this.onDigitPress("9");
+              }}
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={this.onEqualsPress}
+              title="="
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+              iconName="equals"
+            />
+            <CalcButtonLandscape
+              onPress={() =>
+                this.onBinaryOperatorPress(this.oc.DivisionOperator)
+              }
+              title="/"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+              iconName="divide"
+            />
+            <CalcButtonLandscape
+              onPress={() =>
+                this.onBinaryOperatorPress(this.oc.MultiplicationOperator)
+              }
+              title="x"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+              iconName="times"
+            />
+            <CalcButtonLandscape
+              title="sqrt"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+              iconName="square-root-alt"
+            />
+            <CalcButtonLandscape
+              onPress={this.onBackspacePress}
+              title="B"
+              fontColor="#fff"
+              backgroundColor="#AA3939"
+              iconName="backspace"
+            />
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("4");
+              }}
+              title="4"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("5");
+              }}
+              title="5"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("6");
+              }}
+              title="6"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress(".");
+              }}
+              title="."
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={() =>
+                this.onBinaryOperatorPress(this.oc.AdditionOperator)
+              }
+              title="+"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+              iconName="plus"
+            />
+            <CalcButtonLandscape
+              onPress={() =>
+                this.onBinaryOperatorPress(this.oc.SubtractionOperator)
+              }
+              title="-"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+              iconName="minus"
+            />
+            <CalcButtonLandscape
+              onPress={() =>
+                this.onBinaryOperatorPress(this.oc.DivisionOperator)
+              }
+              title="/"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+              iconName="divide"
+            />
+            <CalcButtonLandscape
+              onPress={this.onPlusMinus}
+              title="+/-"
+              fontColor="#fff"
+              backgroundColor="#D4A065"
+            />
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("1");
+              }}
+              title="1"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("2");
+              }}
+              title="2"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("3");
+              }}
+              title="3"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+            />
+
+            <CalcButtonLandscape
+              onPress={() => {
+                this.onDigitPress("0");
+              }}
+              title="0"
+              fontColor="#fff"
+              backgroundColor="#A3C584"
+              // style={{ flex: 2 }}
+            />
+            <CalcButtonLandscape
+              title="sin"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+            />
+            <CalcButtonLandscape
+              title="cos"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+            />
+            <CalcButtonLandscape
+              title="tan"
+              fontColor="#fff"
+              backgroundColor="#265B6A"
+            />
+            <CalcButtonLandscape
+              onPress={this.onClearPress}
+              title="C"
+              fontColor="#fff"
+              backgroundColor="#D4A065"
+              iconName="cuttlefish"
+            />
+          </View>
+        </View>
+      </View>
+    );
+  }
 
   render() {
     var view =
@@ -277,7 +469,7 @@ export default class CalculatorScreen extends Component {
         ? this.renderPortrait()
         : this.renderLandscape();
 
-    return <View style={styles.container}>{view}</View>;
+    return <View style={{ flex: 1, backgroundColor: "#000" }}>{view}</View>;
   }
 }
 
@@ -293,5 +485,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     paddingBottom: 20
   },
-  buttonRow: { flexDirection: "row", justifyContent: "space-between" }
+  buttonRow: { flexDirection: "row", justifyContent: "space-between" },
+  buttonRowLandscape: { flexDirection: "row", justifyContent: "space-evenly" }
 });
