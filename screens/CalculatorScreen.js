@@ -265,7 +265,7 @@ export default class CalculatorScreen extends Component {
   renderLandscape() {
     return (
       <View style={{ flex: 1 }}>
-        <View style={[styles.displayContainer, { backgroundColor: "red" }]}>
+        <View style={[styles.displayContainer]}>
           <CalcDisplay display={this.state.display} />
         </View>
         <View style={{ backgroundColor: "gree" }}>
@@ -320,6 +320,9 @@ export default class CalculatorScreen extends Component {
               iconName="times"
             />
             <CalcButtonLandscape
+              onPress={() =>
+                this.onUnaryOperatorPress(this.oc.SquareRootOperator)
+              }
               title="sqrt"
               fontColor="#fff"
               backgroundColor="#265B6A"
@@ -385,13 +388,11 @@ export default class CalculatorScreen extends Component {
               iconName="minus"
             />
             <CalcButtonLandscape
-              onPress={() =>
-                this.onBinaryOperatorPress(this.oc.DivisionOperator)
-              }
-              title="/"
+              onPress={() => this.onUnaryOperatorPress(this.oc.PercentOperator)}
+              title="%"
               fontColor="#fff"
               backgroundColor="#265B6A"
-              iconName="divide"
+              iconName="percentage"
             />
             <CalcButtonLandscape
               onPress={this.onPlusMinus}
@@ -436,16 +437,19 @@ export default class CalculatorScreen extends Component {
               // style={{ flex: 2 }}
             />
             <CalcButtonLandscape
+              onPress={() => this.onUnaryOperatorPress(this.oc.SineOperator)}
               title="sin"
               fontColor="#fff"
               backgroundColor="#265B6A"
             />
             <CalcButtonLandscape
+              onPress={() => this.onUnaryOperatorPress(this.oc.CosineOperator)}
               title="cos"
               fontColor="#fff"
               backgroundColor="#265B6A"
             />
             <CalcButtonLandscape
+              onPress={() => this.onUnaryOperatorPress(this.oc.TangentOperator)}
               title="tan"
               fontColor="#fff"
               backgroundColor="#265B6A"
