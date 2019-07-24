@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="js/swisscalc.lib.format.js"></script>
+    <script src="js/swisscalc.lib.operator.js"></script>
+    <script src="js/swisscalc.lib.operatorCache.js"></script>
+    <script src="js/swisscalc.lib.shuntingYard.js"></script>
+    <script src="js/swisscalc.calc.calculator.js"></script>
+    <script src="js/swisscalc.display.numericDisplay.js"></script>
+    <script src="js/swisscalc.display.memoryDisplay.js"></script>
+
+    <script>
+      var oc = swisscalc.lib.operatorCache;
+      var calc = new swisscalc.calc.calculator();
+
+      calc.addDigit("1");
+      calc.addUnaryOperator(oc.CosineOperator);
+      calc.equalsPressed();
+      console.log("Cos(1)", calc.getMainDisplay());
+      calc.addDigit("1");
+      calc.addUnaryOperator(oc.SineOperator);
+      calc.equalsPressed();
+      console.log("Sin(1)", calc.getMainDisplay());
+      calc.addDigit("1");
+      calc.addUnaryOperator(oc.TangentOperator);
+      calc.equalsPressed();
+      console.log("Tan(1)", calc.getMainDisplay());
+      calc.addDigit("2");
+      calc.addDigit("5");
+      calc.addUnaryOperator(oc.SquareRootOperator);
+      calc.equalsPressed();
+      console.log("Square root 25 is", calc.getMainDisplay());
+      calc.addDigit("1");
+      calc.addDigit("6");
+      calc.addUnaryOperator(oc.RootOperator);
+      calc.equalsPressed();
+      console.log("Square root 16 is", calc.getMainDisplay());
+    </script>
+  </body>
+</html>
